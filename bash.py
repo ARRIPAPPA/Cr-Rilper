@@ -16,9 +16,9 @@ MAX_MESSAGE_LENGTH = 4096
 FINISHED_PROGRESS_STR = "✅"
 UN_FINISHED_PROGRESS_STR = "❎"
 
-api_id = '19975263'
-api_hash = 'c06e6a449ce68bbc5b30160a05ab8fdb'
-bot_token = '6704115862:AAGMzIiqZyKH5PUXoi5MsicRp6sSg0HAfDU'
+api_id = '16501053'
+api_hash = 'd8c9b01c863dabacc484c2c06cdd0f6e'
+bot_token = '7023966079:AAGVFsxpsLsLH3LxtGwiPlfz4RQNOaR1xlM'
 app = Client("my_bot", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
 
 @app.on_message(filters.command(["start"], prefixes=["/", "!", ".", ""] ) & filters.private)
