@@ -1,11 +1,15 @@
-FROM python:3.9.2-slim-buster
-WORKDIR /app
-COPY requirements.txt .
-RUN apt-get update \
-  && apt-get install -y libgl1 libglib2.0-0 libsm6 libxrender1 libxext6 wget xz-utils \
-  && wget https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-n5.1-latest-linux64-gpl-5.1.tar.xz \
-  && tar -xvf ffmpeg-n5.1-latest-linux64-gpl-5.1.tar.xz -C /usr/bin/ --strip-components=1 \
-  && rm ffmpeg-n5.1-latest-linux64-gpl-5.1.tar.xz
+FROM python:3.10-slim
 
-COPY . .
+WORKDIR /app
+
+COPY . /app
+
+#  ffmpeg
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends ffmpeg \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY requirements.txt /app/
+RUN pip install --no-cache-dir -r requirements.txt
+
 CMD ["python", "bash.py"]
